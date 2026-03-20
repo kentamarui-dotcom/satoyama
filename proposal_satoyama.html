@@ -279,6 +279,109 @@
     font-family: 'Noto Sans JP', sans-serif;
   }
   .print-btn:hover { opacity: 0.9; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 600px) {
+    body {
+      padding: 16px;
+      font-size: 0.9rem;
+    }
+
+    .header h1 {
+      font-size: 1.3rem;
+    }
+
+    .header {
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+
+    .section {
+      margin-bottom: 24px;
+    }
+
+    .section h2 {
+      font-size: 1.1rem;
+    }
+
+    .url-qr-wrapper {
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .url-display {
+      font-size: 0.8rem;
+      padding: 12px;
+    }
+
+    /* テーブルを横スクロール可能に */
+    table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+      font-size: 0.8rem;
+    }
+
+    table thead, table tbody, table tr {
+      display: table;
+      width: 100%;
+      table-layout: fixed;
+    }
+
+    table th, table td {
+      padding: 8px 10px;
+    }
+
+    /* 確認事項テーブルは縦積み */
+    .action-box table {
+      display: block;
+      white-space: normal;
+    }
+
+    .action-box table tbody {
+      display: block;
+    }
+
+    .action-box table tr {
+      display: block;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #e0e0e0;
+      padding-bottom: 8px;
+    }
+
+    .action-box table td {
+      display: block;
+      width: 100% !important;
+      padding: 4px 0;
+    }
+
+    .action-box table td:first-child {
+      color: #c5a55a;
+      font-weight: 700;
+    }
+
+    .plan-card {
+      padding: 16px;
+      margin: 16px 0;
+    }
+
+    .plan-card .plan-total .amount {
+      font-size: 1.3rem;
+    }
+
+    .highlight-box {
+      padding: 14px;
+    }
+
+    .step-text {
+      font-size: 0.85rem;
+    }
+
+    .print-btn {
+      padding: 12px 24px;
+      font-size: 0.9rem;
+    }
+  }
 </style>
 </head>
 <body>
