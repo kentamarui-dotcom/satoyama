@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 | 季節の鍋料理 - 奈良 完全予約制</title>
+<meta name="description" content="奈良市学園赤松町の完全予約制・季節の鍋料理「さと山」。ふぐ鍋・蟹鍋・炭火焼肉を個室でゆったりとお楽しみいただけます。">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --color-bg: #1a1714;
+  --color-bg-light: #2a2520;
+  --color-bg-card: #322d27;
+  --color-gold: #c5a55a;
+  --color-gold-light: #d4ba7a;
+  --color-text: #e8e0d4;
+  --color-text-muted: #a89e90;
+  --color-accent: #8b3a3a;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-sans: 'Noto Sans JP', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.8;
+  overflow-x: hidden;
+}
+
+/* ===== HEADER / NAV ===== */
+header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(26, 23, 20, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(197, 165, 90, 0.15);
+  transition: all 0.3s;
+}
+
+nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+  font-weight: 400;
+}
+
+.nav-links a:hover { color: var(--color-gold); }
+
+.nav-reserve {
+  background: var(--color-gold);
+  color: var(--color-bg) !important;
+  padding: 8px 20px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.nav-reserve:hover {
+  background: var(--color-gold-light) !important;
+  color: var(--color-bg) !important;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-gold);
+  transition: all 0.3s;
+}
+
+/* ===== HERO ===== */
+.hero {
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg);
+}
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.7;
+  transition: opacity 0.8s ease;
+}
+.hero::before {
+  left: 0;
+  background-image: url('images/tabelog_03.jpg');
+}
+.hero::after {
+  right: 0;
+  background-image: url('images/tabelog_16.jpg');
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(90deg, rgba(26,23,20,0.25) 0%, rgba(26,23,20,0.6) 40%, rgba(26,23,20,0.6) 60%, rgba(26,23,20,0.25) 100%),
+    linear-gradient(180deg, rgba(26,23,20,0.05) 0%, rgba(26,23,20,0.2) 50%, rgba(26,23,20,0.95) 100%);
+}
+@media (max-width: 768px) {
+  .hero::before {
+    width: 100%;
+    background-image: url('images/tabelog_14.jpg');
+    opacity: 0.35;
+  }
+  .hero::after {
+    display: none;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 24px;
+}
+
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.9rem;
+  color: var(--color-gold);
+  letter-spacing: 0.4em;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: 0.2em;
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.hero-tagline {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 48px;
+  font-weight: 300;
+}
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid var(--color-gold);
+  color: var(--color-gold);
+  padding: 6px 24px;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 40px;
+}
+
+.hero-cta {
+  display: inline-block;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  padding: 16px 48px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.hero-cta:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-text-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  animation: scrollBounce 2s infinite;
+}
+
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--color-gold), transparent);
+}
+
+@keyframes scrollBounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 100px 24px;
+}
+
+.section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.7rem;
+  color: var(--color-gold);
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+  color: var(--color-text);
+}
+
+.section-desc {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  max-width: 600px;
+  line-height: 2;
+  margin-bottom: 60px;
+  font-weight: 300;
+}
+
+/* ===== CONCEPT ===== */
+#concept {
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.concept-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  line-height: 2.4;
+  color: var(--color-text);
+  max-width: 700px;
+  margin: 0 auto 48px;
+  font-weight: 300;
+}
+
+.concept-features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 60px;
+}
+
+.feature {
+  text-align: center;
+  padding: 32px 16px;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.feature-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  margin-bottom: 12px;
+  letter-spacing: 0.1em;
+}
+
+.feature-text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+/* ===== MENU ===== */
+#menu {
+  background: var(--color-bg-light);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+}
+
+.menu-card {
+  background: var(--color-bg-card);
+  border: 1px solid rgba(197, 165, 90, 0.12);
+  padding: 40px 32px;
+  position: relative;
+  transition: all 0.3s;
+}
+
+.menu-card:hover {
+  border-color: rgba(197, 165, 90, 0.3);
+  transform: translateY(-4px);
+}
+
+.menu-card-badge {
+  position: absolute;
+  top: 0;
+  right: 24px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 6px 12px;
+  letter-spacing: 0.1em;
+}
+
+.menu-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--color-gold);
+  margin-bottom: 16px;
+  letter-spacing: 0.1em;
+}
+
+.menu-card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.menu-card-items {
+  list-style: none;
+  margin-bottom: 24px;
+}
+
+.menu-card-items li {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.menu-card-items li::before {
+  content: '';
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--color-gold);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.menu-card-price {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  color: var(--color-gold);
+  letter-spacing: 0.05em;
+}
+
+.menu-card-price span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-left: 4px;
+}
+
+.menu-note {
+  margin-top: 40px;
+  padding: 24px;
+  border: 1px solid rgba(197, 165, 90, 0.15);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* ===== GALLERY ===== */
+#gallery {
+  background: var(--color-bg);
+  padding: 80px 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.gallery-item {
+  aspect-ratio: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(26,23,20,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+.instagram-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 32px;
+  text-align: center;
+}
+
+.instagram-link a {
+  color: var(--color-gold);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.instagram-link a:hover { color: var(--color-gold-light); }
+
+/* ===== RESERVATION ===== */
+#reservation {
+  background: var(--color-bg-light);
+  text-align: center;
+}
+
+.reserve-box {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--color-bg-card);
+  border: 1px solid rgba(197, 165, 90, 0.2);
+  padding: 60px 40px;
+}
+
+.reserve-box > p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.seat-types {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 36px;
+}
+
+.seat-card {
+  border: 1px solid rgba(197, 165, 90, 0.2);
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.seat-card:hover {
+  border-color: var(--color-gold);
+  transform: translateY(-3px);
+}
+
+.seat-card.selected {
+  border-color: var(--color-gold);
+  box-shadow: 0 0 16px rgba(197, 165, 90, 0.3);
+}
+
+.seat-card-img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.seat-card-body {
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.seat-card-name {
+  font-family: var(--font-serif);
+  font-size: 0.95rem;
+  color: var(--color-gold);
+  margin-bottom: 6px;
+  letter-spacing: 0.1em;
+}
+
+.seat-card-desc {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.seat-card input[type="radio"] {
+  display: none;
+}
+
+.seat-card-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.seat-card.selected .seat-card-check {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+
+.seat-card.selected .seat-card-check::after {
+  content: '\2713';
+  color: var(--color-bg);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.reserve-cta {
+  display: inline-block;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  padding: 18px 56px;
+  text-decoration: none;
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  font-weight: 500;
+  transition: all 0.3s;
+  margin-bottom: 24px;
+}
+
+.reserve-cta:hover {
+  background: var(--color-gold-light);
+  transform: translateY(-2px);
+}
+
+.reserve-phone {
+  margin-top: 24px;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.reserve-phone a {
+  color: var(--color-gold);
+  text-decoration: none;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  letter-spacing: 0.1em;
+}
+
+.reserve-info {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  max-width: 640px;
+  margin: 40px auto 0;
+}
+
+.reserve-info-item {
+  padding: 20px;
+  border: 1px solid rgba(197, 165, 90, 0.1);
+  text-align: center;
+}
+
+.reserve-info-label {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 8px;
+}
+
+.reserve-info-value {
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+/* Store detail table */
+.store-detail {
+  max-width: 800px;
+  margin: 56px auto 0;
+}
+
+.store-detail-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-gold);
+  letter-spacing: 0.15em;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(197, 165, 90, 0.3);
+}
+
+.store-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.store-detail-table tr {
+  border-bottom: 1px solid rgba(197, 165, 90, 0.08);
+}
+
+.store-detail-table th {
+  text-align: left;
+  vertical-align: top;
+  padding: 14px 16px 14px 0;
+  font-size: 0.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.1em;
+  font-weight: 400;
+  white-space: nowrap;
+  width: 140px;
+}
+
+.store-detail-table td {
+  padding: 14px 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.store-detail-table td .detail-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  margin-top: 2px;
+}
+
+/* ===== ACCESS ===== */
+#access {
+  background: var(--color-bg);
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.access-info {
+  padding: 20px 0;
+}
+
+.access-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.access-table tr {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.access-table th {
+  font-weight: 400;
+  color: var(--color-gold);
+  font-size: 0.85rem;
+  padding: 14px 0;
+  text-align: left;
+  width: 100px;
+  letter-spacing: 0.1em;
+  vertical-align: top;
+}
+
+.access-table td {
+  font-size: 0.9rem;
+  padding: 14px 0;
+  color: var(--color-text);
+}
+
+.access-shuttle {
+  margin-top: 32px;
+  padding: 20px 24px;
+  background: var(--color-bg-card);
+  border-left: 3px solid var(--color-gold);
+}
+
+.access-shuttle-title {
+  font-family: var(--font-serif);
+  color: var(--color-gold);
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.access-shuttle p {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.access-map {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(197, 165, 90, 0.12);
+}
+
+.access-map iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  filter: grayscale(0.6) contrast(1.1);
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: var(--color-bg);
+  border-top: 1px solid rgba(197, 165, 90, 0.1);
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--color-gold);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+.footer-address {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+  line-height: 1.8;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.footer-social a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover { color: var(--color-gold); }
+
+.footer-copy {
+  font-size: 0.7rem;
+  color: rgba(168, 158, 144, 0.5);
+  letter-spacing: 0.1em;
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s, transform 0.8s;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 64px;
+    left: 0; right: 0;
+    background: rgba(26, 23, 20, 0.98);
+    padding: 24px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(197, 165, 90, 0.15);
+  }
+  .hamburger { display: flex; }
+
+  .concept-features {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .access-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reserve-info {
+    grid-template-columns: 1fr;
+  }
+
+  .reserve-box {
+    padding: 40px 24px;
+  }
+
+  .seat-types {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .seat-card {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+  }
+
+  .seat-card-img {
+    height: 100%;
+  }
+
+  .store-detail-table th {
+    display: block;
+    padding-bottom: 2px;
+    width: 100%;
+  }
+
+  .store-detail-table td {
+    display: block;
+    padding-top: 0;
+    padding-bottom: 16px;
+  }
+
+  section {
+    padding: 72px 20px;
+  }
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--color-gold);
+  margin: 0 auto 40px;
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <nav>
+    <a href="#" class="nav-logo">さと山</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#concept">こだわり</a></li>
+      <li><a href="#menu">お品書き</a></li>
+      <li><a href="#gallery">ギャラリー</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="#reservation" class="nav-reserve">ご予約</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-subtitle">季節の鍋料理</p>
+    <h1 class="hero-title">さと山</h1>
+    <div class="hero-badge">完全予約制</div>
+    <p class="hero-tagline">奈良の静寂に包まれた、季節を味わう隠れ家</p>
+    <a href="#reservation" class="hero-cta">ご予約はこちら</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- CONCEPT -->
+<section id="concept">
+  <div class="section-inner fade-in">
+    <p class="section-label">CONCEPT</p>
+    <h2 class="section-title">こだわり</h2>
+    <div class="divider"></div>
+    <p class="concept-text">
+      奈良の自然に抱かれた静かな空間で、<br>
+      季節の旬を丁寧に仕立てた鍋料理を<br>
+      大切な方とゆっくりお楽しみください。
+    </p>
+    <div class="concept-features">
+      <div class="feature">
+        <div class="feature-icon">&#x1F35F;</div>
+        <h3 class="feature-title">旬の食材</h3>
+        <p class="feature-text">ふぐ・蟹をはじめ、<br>四季折々の厳選素材を使用</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#x1F3E0;</div>
+        <h3 class="feature-title">完全個室</h3>
+        <p class="feature-text">2名様から10名様まで<br>個室でゆったりとお過ごしいただけます</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">&#x1F343;</div>
+        <h3 class="feature-title">ガーデン席</h3>
+        <p class="feature-text">緑に囲まれたテラスで<br>炭火焼肉もお楽しみいただけます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="section-inner fade-in">
+    <p class="section-label">MENU</p>
+    <h2 class="section-title">お品書き</h2>
+    <p class="section-desc">季節の最高の食材を、心を込めてお仕立ていたします。</p>
+
+    <!-- ディナーコース -->
+    <h3 style="color:var(--color-gold);font-family:'Noto Serif JP',serif;text-align:center;margin-bottom:8px;font-size:1.1rem;letter-spacing:0.1em;">DINNER COURSE</h3>
+    <p style="text-align:center;color:var(--color-text-muted);font-size:0.85rem;margin-bottom:32px;">ディナーコース</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <span class="menu-card-badge">人気</span>
+        <img src="images/fugunabe_course.jpg" alt="天然トラフグ鍋コース" style="width:100%;height:200px;object-fit:cover;margin-bottom:20px;">
+        <h3 class="menu-card-title">ふぐ鍋コース</h3>
+        <p class="menu-card-desc">皮湯引き・テッサ・焼きフグ・フグ鍋など、フグを心ゆくまで楽しめるフグ三昧プラン。天日に当てたヒレで作るヒレ酒もご一緒にどうぞ。</p>
+        <ul class="menu-card-items">
+          <li>皮湯引き</li>
+          <li>てっさ（ふぐ刺し）</li>
+          <li>焼きフグ</li>
+          <li>てっちり（ふぐ鍋）</li>
+          <li>雑炊</li>
+          <li>デザート</li>
+        </ul>
+        <p class="menu-card-price">&yen;11,000<span>（税込・お一人様・6品）</span></p>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/kaninabe_course.jpg" alt="蟹鍋コース" style="width:100%;height:200px;object-fit:cover;margin-bottom:20px;">
+        <h3 class="menu-card-title">蟹鍋コース</h3>
+        <p class="menu-card-desc">カニみそ・焼き蟹・蟹鍋など、蟹を心ゆくまで楽しむプラン。6Rサイズの大きな蟹をたっぷりとお楽しみください。</p>
+        <ul class="menu-card-items">
+          <li>カニみそ</li>
+          <li>焼き蟹</li>
+          <li>蟹鍋</li>
+          <li>雑炊</li>
+          <li>デザート</li>
+        </ul>
+        <p class="menu-card-price">&yen;13,200<span>（税込・お一人様）</span></p>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/10_kue.jpg" alt="天然クエ鍋コース" style="width:100%;height:200px;object-fit:cover;margin-bottom:20px;">
+        <h3 class="menu-card-title">天然クエ鍋コース</h3>
+        <p class="menu-card-desc">お鍋の王様・天然クエ。10kg以上の良質なクエのみを仕入れ、クエ造り・焼きクエ・クエ鍋・クエ雑炊をお楽しみいただけます。さと山特製タレでどうぞ。</p>
+        <ul class="menu-card-items">
+          <li>クエ造り</li>
+          <li>焼きクエ（特製タレ）</li>
+          <li>クエ鍋</li>
+          <li>クエ雑炊</li>
+          <li>デザート</li>
+        </ul>
+        <p class="menu-card-price">要お問い合わせ<span>（仕入れ時のみ）</span></p>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/yakiniku_garden1.jpg" alt="炭火焼肉セット" style="width:100%;height:200px;object-fit:cover;margin-bottom:20px;">
+        <h3 class="menu-card-title">炭火焼肉セット</h3>
+        <p class="menu-card-desc">大阪の老舗「宗寿苑」監修の美味しいタレで。カルビや上タンなど、はじめにこのセットをご注文いただき、追加でお好みのお肉をどうぞ。ガーデンでも室内でもお楽しみいただけます。</p>
+        <p class="menu-card-price">&yen;4,400〜<span>（税込・お一人様）</span></p>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/tabelog_15.jpg" alt="単品焼肉メニュー" style="width:100%;height:200px;object-fit:cover;margin-bottom:20px;">
+        <h3 class="menu-card-title">単品焼肉メニュー</h3>
+        <p class="menu-card-desc">セットに追加でお好みのお肉を一皿ずつ。</p>
+        <table style="width:100%;border-collapse:collapse;margin:16px 0 8px;">
+          <tbody style="font-family:'Noto Sans JP',sans-serif;font-size:0.85rem;color:var(--color-text);">
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">ヘレ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;5,500</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">ランプ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;2,530</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">黒毛和牛ロース</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;2,420</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">上ハラミ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;2,310</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">上タン</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;2,200</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">黒毛和牛カルビ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;1,870</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">ツラミ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;1,760</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">上ミノ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;1,320</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">馬さいぼし</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;1,100</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">シマ腸</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;935</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">ハツ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;935</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">苺のかき氷り</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;880</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">チャンジャおにぎり</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;660</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">キムチ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;495</td></tr>
+            <tr style="border-bottom:1px solid rgba(197,165,90,0.15);"><td style="padding:5px 0;">わかめスープ</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;330</td></tr>
+            <tr><td style="padding:5px 0;">ご飯</td><td style="padding:5px 0;text-align:right;color:var(--color-gold);">&yen;275</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.75rem;color:var(--color-text-muted);text-align:right;">※税込価格</p>
+      </div>
+    </div>
+
+    <!-- ランチコース -->
+    <h3 style="color:var(--color-gold);font-family:'Noto Serif JP',serif;text-align:center;margin:48px 0 8px;font-size:1.1rem;letter-spacing:0.1em;">LUNCH COURSE</h3>
+    <p style="text-align:center;color:var(--color-text-muted);font-size:0.85rem;margin-bottom:32px;">ランチコース</p>
+    <div class="menu-grid" style="grid-template-columns:repeat(auto-fit,minmax(280px,1fr));">
+      <div class="menu-card">
+        <img src="images/tabelog_18.jpg" alt="蟹鍋ライトコース" style="width:100%;height:200px;object-fit:cover;object-position:center 60%;margin-bottom:20px;">
+        <h3 class="menu-card-title">蟹鍋ライトコース</h3>
+        <p class="menu-card-desc">カニみそ・焼き蟹・蟹鍋など、蟹を心ゆくまで楽しむランチプラン。デザート付。</p>
+        <p class="menu-card-price">&yen;7,000<span>（税込・お一人様）</span></p>
+      </div>
+
+      <div class="menu-card">
+        <img src="images/tabelog_17.jpg" alt="フグ鍋ライトコース" style="width:100%;height:200px;object-fit:cover;object-position:center 40%;margin-bottom:20px;">
+        <h3 class="menu-card-title">フグ鍋ライトコース</h3>
+        <p class="menu-card-desc">皮湯引き・テッサ・焼きフグ・フグ鍋など、フグをじっくり堪能するランチプラン。デザート付。</p>
+        <p class="menu-card-price">&yen;6,000<span>（税込・お一人様・5品）</span></p>
+      </div>
+    </div>
+
+    <div class="menu-note">
+      ※ 季節や仕入れ状況により、内容・価格が変更になる場合がございます。<br>
+      ※ その他、鯛しゃぶ・明太子もつ鍋・すき焼きなど、お客様のご要望にできるだけお応えいたします。<br>
+      ※ 飲み放題（日本酒・焼酎・ワイン）もご用意しております。お気軽にお問い合わせください。<br>
+      ※ お支払いはカード（VISA/Master/JCB/AMEX/Diners）・電子マネー・d払いに対応しております。
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner fade-in">
+    <div style="text-align:center; margin-bottom: 48px;">
+      <p class="section-label">GALLERY</p>
+      <h2 class="section-title">ギャラリー</h2>
+      <div class="divider"></div>
+    </div>
+    <!-- お料理 -->
+    <p style="text-align:center;color:var(--color-gold);font-family:'Noto Serif JP',serif;font-size:1rem;letter-spacing:0.15em;margin-bottom:24px;">- お料理 -</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/12_kani_ichiban.jpg" alt="一番人気の蟹鍋">
+      </div>
+      <div class="gallery-item">
+        <img src="images/11_fugunabe.jpg" alt="プリプリのふぐ鍋">
+      </div>
+      <div class="gallery-item">
+        <img src="images/10_kue.jpg" alt="天然クエ">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_17.jpg" alt="ふぐ鍋コースのテーブルセット">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_18.jpg" alt="蟹鍋の準備">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_09.jpg" alt="鯛しゃぶ・鯛の荒炊き">
+      </div>
+      <div class="gallery-item">
+        <img src="images/06_yakikue.jpg" alt="さと山特製タレの焼きクエ">
+      </div>
+      <div class="gallery-item">
+        <img src="images/01_taishabu.jpg" alt="鯛しゃぶ＆牡蠣のお鍋">
+      </div>
+      <div class="gallery-item">
+        <img src="images/05_hirezake.jpg" alt="天日干しヒレで作るヒレ酒">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_15.jpg" alt="桜を添えた炭火焼肉">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_07.jpg" alt="すき焼き">
+      </div>
+      <div class="gallery-item">
+        <img src="images/08_mentai_motsu.jpg" alt="明太子もつ鍋">
+      </div>
+      <div class="gallery-item">
+        <img src="images/13_torinabe.jpg" alt="コラーゲンたっぷり鶏鍋">
+      </div>
+      <div class="gallery-item">
+        <img src="images/04_ichigo.jpg" alt="6FARMの甘いいちごデザート">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_02.jpg" alt="奈良・大和郡山の無花果ワイン">
+      </div>
+    </div>
+
+    <!-- 店内・ガーデン -->
+    <p style="text-align:center;color:var(--color-gold);font-family:'Noto Serif JP',serif;font-size:1rem;letter-spacing:0.15em;margin:48px 0 24px;">- 店内・ガーデン -</p>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="images/tabelog_06.jpg" alt="洋室個室">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_08.jpg" alt="洋室個室（クリムト絵画）">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_12.jpg" alt="丸窓のある個室から緑を望む">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_03.jpg" alt="和室個室">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_10.jpg" alt="TV付き個室">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_14.jpg" alt="ガーデン席の全景">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_16.jpg" alt="ガーデンから山を望む">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_01.jpg" alt="ガーデンで蟹を堪能">
+      </div>
+      <div class="gallery-item">
+        <img src="images/yakiniku_garden1.jpg" alt="ガーデン焼肉">
+      </div>
+      <div class="gallery-item">
+        <img src="images/yakiniku_garden2.jpg" alt="ガーデンでバーベキュー">
+      </div>
+      <div class="gallery-item">
+        <img src="images/tabelog_12.jpg" alt="丸窓の個室">
+      </div>
+      <div class="gallery-item">
+        <img src="images/15_moon.jpg" alt="中秋の名月を眺めるひととき">
+      </div>
+    </div>
+    <div class="instagram-link">
+      <a href="https://www.instagram.com/sa.to.ya.ma" target="_blank" rel="noopener">
+        &#9679; Instagram @sa.to.ya.ma で最新情報を発信中
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section id="reservation">
+  <div class="section-inner fade-in">
+    <div style="text-align:center; margin-bottom: 48px;">
+      <p class="section-label">RESERVATION</p>
+      <h2 class="section-title">ご予約</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="reserve-box">
+      <p>
+        当店は完全予約制でございます。<br>
+        ご希望のお席タイプをお選びください。
+      </p>
+
+      <div class="seat-types">
+        <label class="seat-card" onclick="selectSeat(this)">
+          <input type="radio" name="seat_type" value="table">
+          <div class="seat-card-check"></div>
+          <img class="seat-card-img" src="images/tabelog_12.jpg" alt="テーブル席">
+          <div class="seat-card-body">
+            <p class="seat-card-name">テーブル席</p>
+            <p class="seat-card-desc">丸窓から緑を望む洋室</p>
+          </div>
+        </label>
+        <label class="seat-card" onclick="selectSeat(this)">
+          <input type="radio" name="seat_type" value="private">
+          <div class="seat-card-check"></div>
+          <img class="seat-card-img" src="images/tabelog_05.jpg" alt="完全個室">
+          <div class="seat-card-body">
+            <p class="seat-card-name">完全個室</p>
+            <p class="seat-card-desc">和室の座敷席（2〜10名様）</p>
+          </div>
+        </label>
+        <label class="seat-card" onclick="selectSeat(this)">
+          <input type="radio" name="seat_type" value="garden">
+          <div class="seat-card-check"></div>
+          <img class="seat-card-img" src="images/tabelog_14.jpg" alt="ガーデン席">
+          <div class="seat-card-body">
+            <p class="seat-card-name">ガーデン席</p>
+            <p class="seat-card-desc">緑の芝生と開放的なテラス</p>
+          </div>
+        </label>
+      </div>
+
+      <a href="#" class="reserve-cta">空き状況を確認・予約する</a>
+      <div class="reserve-phone">
+        <p>お電話でのご予約</p>
+        <a href="tel:080-3130-0580">080-3130-0580</a>
+      </div>
+    </div>
+
+    <div class="reserve-info">
+      <div class="reserve-info-item">
+        <p class="reserve-info-label">営業時間</p>
+        <p class="reserve-info-value">11:00 - 22:00</p>
+      </div>
+      <div class="reserve-info-item">
+        <p class="reserve-info-label">定休日</p>
+        <p class="reserve-info-value">毎週木曜日</p>
+      </div>
+      <div class="reserve-info-item">
+        <p class="reserve-info-label">席数</p>
+        <p class="reserve-info-value">室内14席 / ガーデン20席</p>
+      </div>
+      <div class="reserve-info-item">
+        <p class="reserve-info-label">予算</p>
+        <p class="reserve-info-value">ディナー ¥10,000〜¥14,999<br>ランチ ¥6,000〜¥7,999</p>
+      </div>
+    </div>
+
+    <!-- 席・設備 -->
+    <div class="store-detail">
+      <h3 class="store-detail-title">席・設備</h3>
+      <table class="store-detail-table">
+        <tr>
+          <th>個室</th>
+          <td>あり（2名様〜10名様）<br>
+            <span class="detail-sub">4名利用×1室 / 10名利用×1室</span></td>
+        </tr>
+        <tr>
+          <th>最大予約人数</th>
+          <td>着席時 14名</td>
+        </tr>
+        <tr>
+          <th>貸切</th>
+          <td>可（20名様以下）</td>
+        </tr>
+        <tr>
+          <th>禁煙・喫煙</th>
+          <td>分煙</td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td>あり</td>
+        </tr>
+        <tr>
+          <th>空間・設備</th>
+          <td>落ち着いた空間 / オープンテラス / スポーツ観戦可 / 電源あり / 無料Wi-Fi</td>
+        </tr>
+        <tr>
+          <th>お子様連れ</th>
+          <td>歓迎（乳児可・未就学児可・小学生可）</td>
+        </tr>
+        <tr>
+          <th>ドリンク</th>
+          <td>日本酒 / 焼酎 / ワイン<br>
+            <span class="detail-sub">飲み放題もご用意しております</span></td>
+        </tr>
+        <tr>
+          <th>サービス</th>
+          <td>2時間半以上の宴会可 / お祝い・サプライズ対応可</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- お支払い -->
+    <div class="store-detail">
+      <h3 class="store-detail-title">お支払い</h3>
+      <table class="store-detail-table">
+        <tr>
+          <th>クレジットカード</th>
+          <td>VISA / Master / JCB / AMEX / Diners / UnionPay</td>
+        </tr>
+        <tr>
+          <th>電子マネー</th>
+          <td>交通系電子マネー（Suicaなど）</td>
+        </tr>
+        <tr>
+          <th>QRコード決済</th>
+          <td>d払い</td>
+        </tr>
+        <tr>
+          <th>サービス料</th>
+          <td>なし</td>
+        </tr>
+        <tr>
+          <th>領収書</th>
+          <td>適格請求書（インボイス）対応の領収書発行可<br>
+            <span class="detail-sub">登録番号：T1810890326973</span></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- 交通手段 -->
+    <div class="store-detail">
+      <h3 class="store-detail-title">交通手段</h3>
+      <table class="store-detail-table">
+        <tr>
+          <th>最寄り</th>
+          <td>近鉄「富雄駅」より 1,279m</td>
+        </tr>
+        <tr>
+          <th>バス</th>
+          <td>バス停「学園緑ヶ丘1丁目」より徒歩3分</td>
+        </tr>
+        <tr>
+          <th>無料送迎</th>
+          <td>富雄駅・学園前駅より送迎いたします<br>
+            <span class="detail-sub">ご予約時にお申し付けください</span></td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td>あり</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access">
+  <div class="section-inner fade-in">
+    <p class="section-label">ACCESS</p>
+    <h2 class="section-title">アクセス</h2>
+    <p class="section-desc">奈良の自然に包まれた静かな立地。駅からの送迎も承っております。</p>
+
+    <div class="access-grid">
+      <div class="access-info">
+        <table class="access-table">
+          <tr>
+            <th>住所</th>
+            <td>〒631-0053<br>奈良県奈良市学園赤松町3628</td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td><a href="tel:080-3130-0580" style="color:var(--color-gold);text-decoration:none;">080-3130-0580</a></td>
+          </tr>
+          <tr>
+            <th>営業時間</th>
+            <td>11:00 - 22:00</td>
+          </tr>
+          <tr>
+            <th>定休日</th>
+            <td>毎週木曜日</td>
+          </tr>
+          <tr>
+            <th>駐車場</th>
+            <td>あり</td>
+          </tr>
+        </table>
+
+        <div class="access-shuttle">
+          <p class="access-shuttle-title">無料送迎サービス</p>
+          <p>
+            近鉄「富雄駅」・「学園前駅」より<br>
+            無料送迎を承っております。<br>
+            ご予約時にお申し付けください。
+          </p>
+        </div>
+      </div>
+
+      <div class="access-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3281.5!2d135.756!3d34.695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z5aWI6Imv55yM5aWI6Imv5biC5a2m5ZyS6LWk5p2-55S6!5e0!3m2!1sja!2sjp!4v1"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="さと山の地図">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">さと山</div>
+  <p class="footer-address">
+    季節の鍋料理<br>
+    〒631-0053 奈良県奈良市学園赤松町3628<br>
+    TEL 080-3130-0580
+  </p>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/sa.to.ya.ma" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://tabelog.com/nara/A2901/A290102/29014120/" target="_blank" rel="noopener">食べログ</a>
+  </div>
+  <p class="footer-copy">&copy; 2026 さと山 All Rights Reserved.</p>
+</footer>
+
+<script>
+// Hamburger menu
+document.getElementById('hamburger').addEventListener('click', function() {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Close menu on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Seat type selection
+function selectSeat(card) {
+  document.querySelectorAll('.seat-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  card.querySelector('input[type="radio"]').checked = true;
+}
+
+// Header scroll effect
+window.addEventListener('scroll', () => {
+  const header = document.querySelector('header');
+  if (window.scrollY > 50) {
+    header.style.background = 'rgba(26, 23, 20, 0.98)';
+  } else {
+    header.style.background = 'rgba(26, 23, 20, 0.92)';
+  }
+});
+</script>
+
+</body>
+</html>
