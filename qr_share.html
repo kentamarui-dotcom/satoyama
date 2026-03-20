@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>LINE共有用QRコード</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+body { background: #1a1a2e; color: #e0e0e0; font-family: 'Helvetica Neue', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 40px 20px; gap: 48px; }
+h1 { font-size: 1.5rem; color: #c5a55a; margin: 0; }
+.card { background: #16213e; border: 1px solid #c5a55a33; border-radius: 12px; padding: 32px; text-align: center; width: 100%; max-width: 480px; }
+.card h2 { font-size: 1.1rem; color: #c5a55a; margin: 0 0 8px; }
+.card p { font-size: 0.85rem; color: #aaa; margin: 0 0 20px; word-break: break-all; }
+.qr-box { background: #fff; display: inline-block; padding: 16px; border-radius: 8px; }
+.tip { font-size: 0.8rem; color: #888; margin-top: 16px; line-height: 1.6; }
+</style>
+</head>
+<body>
+<h1>LINE共有用 QRコード</h1>
+<p style="color:#aaa;font-size:0.9rem;margin:0;">iPhoneのカメラで読み取り → URLをコピー → LINEに貼り付け</p>
+
+<div class="card">
+  <h2>サンプルサイト</h2>
+  <p>https://kentamarui-dotcom.github.io/satoyama/</p>
+  <div class="qr-box" id="qr1"></div>
+  <p class="tip">さと山のホームページサンプル</p>
+</div>
+
+<div class="card">
+  <h2>提案書（費用まとめ）</h2>
+  <p>https://kentamarui-dotcom.github.io/satoyama/proposal_satoyama.html</p>
+  <div class="qr-box" id="qr2"></div>
+  <p class="tip">ドメイン・サーバー・予約システムの費用</p>
+</div>
+
+<script>
+function renderQR(id, url) {
+  var qr = qrcode(0, 'M');
+  qr.addData(url);
+  qr.make();
+  var size = 6;
+  var img = document.createElement('img');
+  img.src = qr.createDataURL(size, 0);
+  img.alt = url;
+  img.style.width = '200px';
+  img.style.height = '200px';
+  img.style.imageRendering = 'pixelated';
+  document.getElementById(id).appendChild(img);
+}
+renderQR('qr1', 'https://kentamarui-dotcom.github.io/satoyama/');
+renderQR('qr2', 'https://kentamarui-dotcom.github.io/satoyama/proposal_satoyama.html');
+</script>
+</body>
+</html>
