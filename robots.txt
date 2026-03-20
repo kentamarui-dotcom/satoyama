@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kentamarui-dotcom.github.io/satoyama/sitemap.xml
