@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 — Design 03: 縦書き和モダン</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;600;800&family=Noto+Sans+JP:wght@300;400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#12100e;--bg2:#1c1914;--gold:#c4a35a;--gold-dim:rgba(196,163,90,.3);
+  --text:#d8cfc0;--text-dim:#7a7060;
+  --serif:'Shippori Mincho',serif;--sans:'Noto Sans JP',sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-weight:300;overflow-x:hidden}
+a.back{position:fixed;top:20px;left:20px;z-index:100;font-size:.75rem;color:var(--gold);text-decoration:none;letter-spacing:.1em}
+
+/* HERO - 縦書き中心 */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.hero-photo{
+  position:absolute;inset:0;
+  background:url('images/fugunabe_course.jpg') center/cover;
+  opacity:.15;filter:brightness(.6);
+}
+.hero-content{
+  position:relative;z-index:2;display:flex;align-items:center;
+  gap:40px;padding:40px;
+}
+.hero-vertical{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  display:flex;gap:24px;align-items:flex-start;
+}
+.hero-title{
+  font-family:var(--serif);font-size:clamp(3rem,8vw,5rem);
+  font-weight:800;color:var(--text);letter-spacing:.2em;
+}
+.hero-sub{
+  font-family:var(--serif);font-size:clamp(.85rem,2vw,1rem);
+  color:var(--gold);letter-spacing:.5em;line-height:2.5;
+  border-right:1px solid var(--gold-dim);padding-right:16px;
+}
+.hero-badge{
+  writing-mode:horizontal-tb;
+  border:1px solid var(--gold);color:var(--gold);
+  padding:6px 20px;font-size:.7rem;letter-spacing:.3em;
+  position:absolute;bottom:60px;left:50%;transform:translateX(-50%);
+}
+.hero-cta-wrap{
+  position:absolute;bottom:60px;right:60px;
+  writing-mode:horizontal-tb;
+}
+.hero-cta{
+  display:inline-block;background:var(--gold);color:var(--bg);
+  padding:12px 36px;text-decoration:none;font-size:.8rem;letter-spacing:.2em;
+  transition:all .3s;
+}
+.hero-cta:hover{background:#d4ba7a}
+
+/* GOLD LINE DECORATION */
+.gold-line{width:1px;height:80px;background:linear-gradient(to bottom,var(--gold),transparent);margin:0 auto}
+
+/* SECTIONS */
+section{padding:80px 24px}
+.inner{max-width:900px;margin:0 auto}
+
+/* CONCEPT */
+#concept{text-align:center;background:var(--bg2)}
+.concept-vertical{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-family:var(--serif);font-size:clamp(1rem,2vw,1.2rem);
+  line-height:3;color:var(--text);letter-spacing:.15em;
+  margin:0 auto 48px;display:inline-block;
+  max-height:400px;
+}
+.features{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.feat{text-align:center;position:relative;padding:24px 20px}
+.feat::before{content:'';position:absolute;top:0;left:50%;width:1px;height:20px;background:var(--gold-dim);transform:translateX(-50%)}
+.feat-title{font-family:var(--serif);font-size:1rem;color:var(--gold);margin-bottom:8px;letter-spacing:.15em}
+.feat-text{font-size:.8rem;color:var(--text-dim);line-height:1.8}
+
+/* MENU */
+#menu .s-head{text-align:center;margin-bottom:48px}
+.s-label{font-size:.7rem;color:var(--gold);letter-spacing:.5em;margin-bottom:8px}
+.s-title{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);letter-spacing:.15em}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.menu-card{
+  background:var(--bg2);padding:28px;border-top:2px solid var(--gold-dim);
+  transition:border-color .3s;
+}
+.menu-card:hover{border-color:var(--gold)}
+.menu-name{font-family:var(--serif);font-size:1.1rem;margin-bottom:6px;letter-spacing:.1em}
+.menu-desc{font-size:.78rem;color:var(--text-dim);line-height:1.8;margin-bottom:12px}
+.menu-price{font-family:var(--serif);font-size:1rem;color:var(--gold)}
+
+/* GALLERY */
+#gallery{background:var(--bg2)}
+#gallery .s-head{text-align:center;margin-bottom:48px}
+.gallery-mosaic{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:250px 250px;gap:4px}
+.gallery-mosaic img{width:100%;height:100%;object-fit:cover}
+.gallery-mosaic img:first-child{grid-row:1/3}
+
+/* ACCESS */
+#access{text-align:center}
+.access-vertical{
+  writing-mode:vertical-rl;text-orientation:mixed;
+  font-family:var(--serif);font-size:.95rem;line-height:3;
+  display:inline-block;margin-bottom:32px;letter-spacing:.1em;
+}
+.access-tel{
+  font-family:var(--serif);font-size:1.5rem;color:var(--gold);
+  text-decoration:none;display:block;margin-bottom:16px;letter-spacing:.1em;
+}
+.access-note{font-size:.78rem;color:var(--text-dim)}
+
+footer{background:var(--bg2);text-align:center;padding:40px 24px;font-size:.7rem;color:var(--text-dim);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .hero-content{flex-direction:column}
+  .hero-vertical{gap:16px}
+  .hero-cta-wrap{right:auto;left:50%;transform:translateX(-50%)}
+  .gallery-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:200px 200px 200px}
+  .gallery-mosaic img:first-child{grid-row:auto}
+  .concept-vertical{max-height:300px;font-size:.95rem}
+}
+</style>
+</head>
+<body>
+<a href="design_gallery.html" class="back">← 一覧に戻る</a>
+
+<section class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-content">
+    <div class="hero-vertical">
+      <div class="hero-sub">季節の鍋料理<br>完全予約制の隠れ家</div>
+      <h1 class="hero-title">さと山</h1>
+    </div>
+  </div>
+  <div class="hero-badge">完全予約制</div>
+  <div class="hero-cta-wrap">
+    <a href="tel:08031300580" class="hero-cta">ご予約</a>
+  </div>
+</section>
+
+<div class="gold-line"></div>
+
+<section id="concept">
+  <div class="inner">
+    <div class="concept-vertical">
+      奈良の静かな住宅街にひっそりと佇む隠れ家で
+      ふぐ蟹天然クエなど季節の最高峰の食材を
+      完全個室でゆったりとお楽しみいただけます
+    </div>
+    <div class="features">
+      <div class="feat"><div class="feat-title">完全個室</div><div class="feat-text">2〜10名様</div></div>
+      <div class="feat"><div class="feat-title">ガーデン席</div><div class="feat-text">炭火焼肉専用</div></div>
+      <div class="feat"><div class="feat-title">無料送迎</div><div class="feat-text">富雄・学園前駅</div></div>
+      <div class="feat"><div class="feat-title">駐車場完備</div><div class="feat-text">お車でも安心</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="inner">
+    <div class="s-head">
+      <p class="s-label">お品書き</p>
+      <h2 class="s-title">季節の鍋コース</h2>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card"><h3 class="menu-name">ふぐ鍋コース</h3><p class="menu-desc">皮湯引き・テッサ・焼きフグ・フグ鍋・雑炊・デザート</p><p class="menu-price">¥11,000</p></div>
+      <div class="menu-card"><h3 class="menu-name">蟹鍋コース</h3><p class="menu-desc">カニみそ・焼き蟹・蟹鍋・雑炊・デザート</p><p class="menu-price">¥13,200</p></div>
+      <div class="menu-card"><h3 class="menu-name">天然クエ鍋コース</h3><p class="menu-desc">幻の高級魚クエを贅沢に鍋で</p><p class="menu-price">要お問合せ</p></div>
+      <div class="menu-card"><h3 class="menu-name">炭火焼肉セット</h3><p class="menu-desc">宗寿苑監修タレの炭火焼肉</p><p class="menu-price">¥4,400〜</p></div>
+      <div class="menu-card"><h3 class="menu-name">蟹鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥7,000</p></div>
+      <div class="menu-card"><h3 class="menu-name">フグ鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥6,000</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="inner">
+    <div class="s-head">
+      <p class="s-label">写真</p>
+      <h2 class="s-title">料理と空間</h2>
+    </div>
+    <div class="gallery-mosaic">
+      <img src="images/fugunabe_course.jpg" alt="ふぐ鍋コース" loading="lazy">
+      <img src="images/10_kue.jpg" alt="天然クエ" loading="lazy">
+      <img src="images/14_garden_bbq.jpg" alt="ガーデン席" loading="lazy">
+      <img src="images/kaninabe_course.jpg" alt="蟹鍋コース" loading="lazy">
+      <img src="images/tabelog_03.jpg" alt="個室" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="inner">
+    <p class="s-label" style="text-align:center">ご案内</p>
+    <h2 class="s-title" style="text-align:center;margin-bottom:32px">アクセス</h2>
+    <div style="text-align:center">
+      <div class="access-vertical">
+        奈良県奈良市学園赤松町三六二八
+        営業時間　午前十一時より午後十時
+        定休日　毎週木曜日
+      </div>
+    </div>
+    <div style="text-align:center">
+      <a href="tel:08031300580" class="access-tel">080-3130-0580</a>
+      <p class="access-note">富雄駅・学園前駅より無料送迎あり（要予約）</p>
+    </div>
+  </div>
+</section>
+
+<footer>さと山 &copy; 2026</footer>
+</body>
+</html>

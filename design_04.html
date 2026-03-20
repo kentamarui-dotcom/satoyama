@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 — Design 04: 里山カラー×オーガニック</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@300;400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#f7f4ef;--bg2:#eee8dc;--green:#3d5a3a;--green-light:#6b8c5a;
+  --brown:#6b4e2e;--brown-light:#a08050;--text:#2d2a24;--text-dim:#8a8070;
+  --font:'Zen Maru Gothic',sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-weight:400}
+a.back{position:fixed;top:20px;left:20px;z-index:100;font-size:.8rem;color:var(--green);text-decoration:none}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+}
+.hero-left{flex:1;padding:60px;display:flex;flex-direction:column;justify-content:center}
+.hero-right{flex:1;position:relative;min-height:100vh}
+.hero-right img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-right::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 0%,transparent 30%)}
+
+.hero-leaf{font-size:2rem;margin-bottom:16px}
+.hero-sub{font-size:.8rem;color:var(--green);letter-spacing:.3em;margin-bottom:16px;font-weight:500}
+.hero-title{font-size:clamp(2.5rem,7vw,4rem);font-weight:700;margin-bottom:12px;color:var(--green);letter-spacing:.1em}
+.hero-tagline{font-size:.9rem;color:var(--text-dim);line-height:2;margin-bottom:40px;max-width:380px}
+.hero-cta{
+  display:inline-block;background:var(--green);color:#fff;
+  padding:14px 40px;text-decoration:none;font-size:.85rem;
+  border-radius:40px;letter-spacing:.15em;transition:all .3s;font-weight:500;
+}
+.hero-cta:hover{background:var(--green-light);transform:translateY(-2px)}
+.hero-badge{
+  display:inline-block;margin-left:16px;
+  border:1px solid var(--green);color:var(--green);
+  padding:10px 24px;border-radius:40px;font-size:.75rem;letter-spacing:.2em;
+}
+
+/* SECTIONS */
+section{padding:80px 24px}
+.inner{max-width:960px;margin:0 auto}
+.s-head{text-align:center;margin-bottom:48px}
+.s-label{font-size:.75rem;color:var(--green-light);letter-spacing:.3em;margin-bottom:8px;font-weight:500}
+.s-title{font-size:clamp(1.5rem,3vw,2rem);color:var(--green);letter-spacing:.1em;font-weight:700}
+.s-line{width:40px;height:3px;background:var(--green-light);margin:12px auto 0;border-radius:2px}
+
+/* CONCEPT */
+#concept{background:var(--bg2);border-radius:0}
+.concept-text{text-align:center;font-size:clamp(.95rem,2vw,1.1rem);line-height:2.4;max-width:550px;margin:0 auto 48px;color:var(--text)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat{
+  background:var(--bg);padding:28px 20px;border-radius:16px;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.04);
+}
+.feat-icon{font-size:2rem;margin-bottom:12px}
+.feat-title{font-size:.95rem;color:var(--green);margin-bottom:8px;font-weight:700}
+.feat-text{font-size:.8rem;color:var(--text-dim);line-height:1.8}
+
+/* MENU */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.menu-card{
+  background:var(--bg2);padding:24px;border-radius:12px;
+  border-left:4px solid var(--green-light);
+}
+.menu-name{font-size:1.05rem;color:var(--green);margin-bottom:6px;font-weight:700}
+.menu-desc{font-size:.8rem;color:var(--text-dim);line-height:1.7;margin-bottom:10px}
+.menu-price{font-size:1rem;color:var(--brown);font-weight:700}
+
+/* GALLERY */
+#gallery{background:var(--bg2)}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:12px}
+
+/* ACCESS */
+#access{text-align:center}
+.access-info{font-size:.9rem;line-height:2.2;margin-bottom:24px}
+.access-tel{
+  display:inline-block;background:var(--green);color:#fff;
+  padding:14px 40px;border-radius:40px;text-decoration:none;
+  font-size:1.1rem;letter-spacing:.1em;font-weight:500;margin-bottom:16px;
+}
+.access-note{font-size:.78rem;color:var(--text-dim)}
+
+footer{background:var(--green);color:rgba(255,255,255,.8);text-align:center;padding:32px 24px;font-size:.75rem;letter-spacing:.1em}
+
+@media(max-width:768px){
+  .hero{flex-direction:column-reverse}
+  .hero-right{min-height:40vh;width:100%}
+  .hero-right::after{background:linear-gradient(0deg,var(--bg) 10%,transparent 40%)}
+  .hero-left{padding:32px 24px}
+  .features{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<a href="design_gallery.html" class="back">← 一覧</a>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-leaf">🌿</div>
+    <p class="hero-sub">奈良の隠れ家レストラン</p>
+    <h1 class="hero-title">さと山</h1>
+    <p class="hero-tagline">里山の恵みを、まるごと味わう。<br>季節の鍋料理を完全個室で、ゆったりと。</p>
+    <div>
+      <a href="tel:08031300580" class="hero-cta">ご予約はこちら</a>
+      <span class="hero-badge">完全予約制</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="images/03_garden.jpg" alt="さと山外観">
+  </div>
+</section>
+
+<section id="concept">
+  <div class="inner">
+    <div class="s-head"><p class="s-label">CONCEPT</p><h2 class="s-title">里山のおもてなし</h2><div class="s-line"></div></div>
+    <p class="concept-text">奈良の閑静な住宅街に佇む隠れ家で、<br>ふぐ・蟹・天然クエなど季節の最高峰の食材を<br>完全個室でお楽しみいただけます。</p>
+    <div class="features">
+      <div class="feat"><div class="feat-icon">🏠</div><div class="feat-title">完全個室</div><div class="feat-text">2名様から10名様まで<br>プライベート空間</div></div>
+      <div class="feat"><div class="feat-icon">🌳</div><div class="feat-title">ガーデン席</div><div class="feat-text">開放的な庭園で<br>炭火焼肉BBQ</div></div>
+      <div class="feat"><div class="feat-icon">🚗</div><div class="feat-title">無料送迎</div><div class="feat-text">富雄駅・学園前駅<br>お迎えにあがります</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="inner">
+    <div class="s-head"><p class="s-label">MENU</p><h2 class="s-title">お品書き</h2><div class="s-line"></div></div>
+    <div class="menu-grid">
+      <div class="menu-card"><h3 class="menu-name">ふぐ鍋コース</h3><p class="menu-desc">皮湯引き・テッサ・焼きフグ・フグ鍋・雑炊・デザート（6品）</p><p class="menu-price">¥11,000</p></div>
+      <div class="menu-card"><h3 class="menu-name">蟹鍋コース</h3><p class="menu-desc">カニみそ・焼き蟹・蟹鍋・雑炊・デザート</p><p class="menu-price">¥13,200</p></div>
+      <div class="menu-card"><h3 class="menu-name">天然クエ鍋コース</h3><p class="menu-desc">幻の高級魚クエを贅沢に鍋で</p><p class="menu-price">要お問合せ</p></div>
+      <div class="menu-card"><h3 class="menu-name">炭火焼肉セット</h3><p class="menu-desc">宗寿苑監修タレの炭火焼肉</p><p class="menu-price">¥4,400〜</p></div>
+      <div class="menu-card"><h3 class="menu-name">蟹鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥7,000</p></div>
+      <div class="menu-card"><h3 class="menu-name">フグ鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥6,000</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="inner">
+    <div class="s-head"><p class="s-label">GALLERY</p><h2 class="s-title">お料理と空間</h2><div class="s-line"></div></div>
+    <div class="gallery-grid">
+      <img src="images/fugunabe_course.jpg" alt="ふぐ鍋" loading="lazy">
+      <img src="images/kaninabe_course.jpg" alt="蟹鍋" loading="lazy">
+      <img src="images/14_garden_bbq.jpg" alt="ガーデンBBQ" loading="lazy">
+      <img src="images/10_kue.jpg" alt="天然クエ" loading="lazy">
+      <img src="images/11_fugunabe.jpg" alt="ふぐ刺し" loading="lazy">
+      <img src="images/tabelog_03.jpg" alt="個室" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section id="access">
+  <div class="inner">
+    <div class="s-head"><p class="s-label">ACCESS</p><h2 class="s-title">アクセス</h2><div class="s-line"></div></div>
+    <div class="access-info">〒631-0053 奈良県奈良市学園赤松町3628<br>営業時間：11:00〜22:00（木曜定休）</div>
+    <a href="tel:08031300580" class="access-tel">080-3130-0580</a>
+    <p class="access-note">富雄駅・学園前駅より無料送迎あり（要予約）</p>
+  </div>
+</section>
+
+<footer>さと山 &copy; 2026</footer>
+</body>
+</html>

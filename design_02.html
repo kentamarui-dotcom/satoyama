@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 — Design 02: ホワイトミニマル</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@200;400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#fafafa;--text:#1a1a1a;--text-light:#888;--line:#ddd;
+  --serif:'Cormorant Garamond',serif;--sans:'Noto Sans JP',sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-weight:200}
+a.back{position:fixed;top:20px;left:20px;z-index:100;font-size:.8rem;color:var(--text-light);text-decoration:none}
+
+/* HERO */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;padding:40px 24px;position:relative;
+}
+.hero-content{max-width:600px}
+.hero-en{font-family:var(--serif);font-size:.85rem;letter-spacing:.8em;color:var(--text-light);margin-bottom:32px;font-weight:300}
+.hero-title{font-size:clamp(2.5rem,8vw,4.5rem);letter-spacing:.3em;font-weight:400;margin-bottom:24px;line-height:1.3}
+.hero-line{width:60px;height:1px;background:var(--text);margin:0 auto 24px;opacity:.3}
+.hero-tagline{font-size:.85rem;color:var(--text-light);letter-spacing:.2em;line-height:2;margin-bottom:48px}
+.hero-cta{
+  display:inline-block;padding:14px 56px;border:1px solid var(--text);
+  color:var(--text);text-decoration:none;font-size:.8rem;letter-spacing:.3em;
+  transition:all .3s;
+}
+.hero-cta:hover{background:var(--text);color:var(--bg)}
+
+/* PHOTO STRIP */
+.photo-strip{
+  display:flex;overflow-x:auto;gap:0;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+.photo-strip img{
+  width:33.333%;min-width:300px;height:50vh;object-fit:cover;
+  scroll-snap-align:start;flex-shrink:0;
+}
+
+/* SECTIONS */
+section{padding:100px 24px}
+.inner{max-width:800px;margin:0 auto}
+.s-label{font-family:var(--serif);font-size:.75rem;letter-spacing:.6em;color:var(--text-light);margin-bottom:8px}
+.s-title{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:.2em;margin-bottom:16px;font-weight:400}
+.s-desc{font-size:.85rem;color:var(--text-light);line-height:2.2;margin-bottom:48px}
+.divider{width:40px;height:1px;background:var(--line);margin:0 auto 48px}
+
+/* CONCEPT */
+#concept{text-align:center}
+.concept-text{font-size:clamp(.95rem,2vw,1.15rem);line-height:2.8;letter-spacing:.1em;max-width:500px;margin:0 auto 48px;font-weight:400}
+.features{display:flex;justify-content:center;gap:64px}
+.feat{text-align:center}
+.feat-num{font-family:var(--serif);font-size:2rem;color:var(--text);margin-bottom:4px;font-weight:300}
+.feat-label{font-size:.7rem;color:var(--text-light);letter-spacing:.2em}
+
+/* MENU */
+#menu{background:#f4f4f4}
+.menu-list{list-style:none}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:24px 0;border-bottom:1px solid var(--line);
+}
+.menu-name{font-size:1rem;letter-spacing:.1em;font-weight:400}
+.menu-sub{font-size:.75rem;color:var(--text-light);margin-top:4px}
+.menu-price{font-family:var(--serif);font-size:1.1rem;letter-spacing:.05em;white-space:nowrap}
+.menu-dots{flex:1;border-bottom:1px dotted var(--line);margin:0 16px;min-width:20px}
+
+/* PHOTO PAIR */
+.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.photo-pair img{width:100%;height:45vh;object-fit:cover}
+
+/* ACCESS */
+#access{text-align:center}
+.access-addr{font-size:.9rem;line-height:2.4;letter-spacing:.1em;margin-bottom:32px}
+.access-tel{font-family:var(--serif);font-size:1.8rem;color:var(--text);text-decoration:none;display:block;margin-bottom:12px;letter-spacing:.1em;font-weight:300}
+.access-note{font-size:.75rem;color:var(--text-light)}
+
+/* FOOTER */
+footer{text-align:center;padding:48px 24px;font-size:.7rem;color:var(--text-light);letter-spacing:.2em}
+
+@media(max-width:768px){
+  .features{flex-direction:column;gap:32px}
+  .menu-item{flex-wrap:wrap}
+  .menu-dots{display:none}
+  .menu-price{margin-top:8px}
+  .photo-pair{grid-template-columns:1fr}
+  .photo-pair img{height:35vh}
+}
+</style>
+</head>
+<body>
+<a href="design_gallery.html" class="back">← 一覧に戻る</a>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-en">SATOYAMA</p>
+    <h1 class="hero-title">さと山</h1>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">季節の鍋料理を、完全個室で<br>奈良の隠れ家 — 完全予約制</p>
+    <a href="tel:08031300580" class="hero-cta">RESERVATION</a>
+  </div>
+</section>
+
+<div class="photo-strip">
+  <img src="images/fugunabe_course.jpg" alt="ふぐ鍋コース" loading="lazy">
+  <img src="images/14_garden_bbq.jpg" alt="ガーデン席" loading="lazy">
+  <img src="images/kaninabe_course.jpg" alt="蟹鍋コース" loading="lazy">
+  <img src="images/tabelog_03.jpg" alt="個室" loading="lazy">
+</div>
+
+<section id="concept">
+  <div class="inner">
+    <p class="s-label">CONCEPT</p>
+    <h2 class="s-title">里山のおもてなし</h2>
+    <div class="divider"></div>
+    <p class="concept-text">
+      奈良の閑静な住宅街に佇む<br>
+      完全予約制の隠れ家。<br><br>
+      ふぐ・蟹・天然クエなど<br>
+      最高峰の食材を<br>
+      プライベート空間でお届けします。
+    </p>
+    <div class="features">
+      <div class="feat"><div class="feat-num">14</div><div class="feat-label">室内席</div></div>
+      <div class="feat"><div class="feat-num">20</div><div class="feat-label">ガーデン席</div></div>
+      <div class="feat"><div class="feat-num">10</div><div class="feat-label">名様まで個室</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="inner">
+    <p class="s-label">MENU</p>
+    <h2 class="s-title">お品書き</h2>
+    <div class="divider"></div>
+    <ul class="menu-list">
+      <li class="menu-item">
+        <div><div class="menu-name">ふぐ鍋コース</div><div class="menu-sub">皮湯引き・テッサ・焼きフグ・フグ鍋・雑炊・デザート</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">¥11,000</div>
+      </li>
+      <li class="menu-item">
+        <div><div class="menu-name">蟹鍋コース</div><div class="menu-sub">カニみそ・焼き蟹・蟹鍋・雑炊・デザート</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">¥13,200</div>
+      </li>
+      <li class="menu-item">
+        <div><div class="menu-name">天然クエ鍋コース</div><div class="menu-sub">幻の高級魚クエを贅沢に鍋で</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">要お問合せ</div>
+      </li>
+      <li class="menu-item">
+        <div><div class="menu-name">炭火焼肉セット</div><div class="menu-sub">宗寿苑監修タレの炭火焼肉（ガーデン席）</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">¥4,400〜</div>
+      </li>
+      <li class="menu-item">
+        <div><div class="menu-name">蟹鍋ライトコース</div><div class="menu-sub">ランチ限定</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">¥7,000</div>
+      </li>
+      <li class="menu-item">
+        <div><div class="menu-name">フグ鍋ライトコース</div><div class="menu-sub">ランチ限定</div></div>
+        <span class="menu-dots"></span>
+        <div class="menu-price">¥6,000</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="photo-pair">
+  <img src="images/11_fugunabe.jpg" alt="ふぐ刺し" loading="lazy">
+  <img src="images/tabelog_16.jpg" alt="ガーデン席の景色" loading="lazy">
+</div>
+
+<section id="access">
+  <div class="inner">
+    <p class="s-label">ACCESS</p>
+    <h2 class="s-title">アクセス</h2>
+    <div class="divider"></div>
+    <div class="access-addr">
+      〒631-0053<br>
+      奈良県奈良市学園赤松町3628<br>
+      営業時間 11:00〜22:00（木曜定休）
+    </div>
+    <a href="tel:08031300580" class="access-tel">080-3130-0580</a>
+    <p class="access-note">富雄駅・学園前駅より無料送迎あり（要予約）</p>
+  </div>
+</section>
+
+<footer>SATOYAMA &copy; 2026</footer>
+</body>
+</html>

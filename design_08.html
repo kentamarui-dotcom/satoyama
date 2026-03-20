@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 — Design 08: 四季グラデーション</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@300;400;700&family=Zen+Old+Mincho:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --spring:#e8b4b8;--summer:#a8c8a0;--autumn:#d4a060;--winter:#b0c4d8;
+  --text:#2a2a2a;--text-dim:#6a6a6a;--bg:#fafaf8;
+  --sans:'M PLUS 1p',sans-serif;--serif:'Zen Old Mincho',serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-weight:400;overflow-x:hidden}
+a.back{position:fixed;top:20px;left:20px;z-index:100;font-size:.75rem;color:var(--text-dim);text-decoration:none}
+
+/* HERO - 四季グラデーション背景 */
+.hero{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;position:relative;
+  background:linear-gradient(135deg,var(--spring) 0%,#f0d4a8 30%,var(--summer) 60%,var(--winter) 100%);
+}
+.hero::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.35)}
+.hero-content{position:relative;z-index:2}
+.hero-seasons{display:flex;gap:16px;justify-content:center;margin-bottom:24px}
+.hero-season{
+  width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;background:rgba(255,255,255,.7);backdrop-filter:blur(4px);
+}
+.hero-title{font-family:var(--serif);font-size:clamp(3rem,8vw,5rem);font-weight:700;color:var(--text);letter-spacing:.2em;margin-bottom:12px}
+.hero-tagline{font-size:.9rem;color:var(--text-dim);letter-spacing:.2em;line-height:2;margin-bottom:40px}
+.hero-cta{
+  display:inline-block;background:rgba(255,255,255,.85);color:var(--text);
+  padding:14px 48px;text-decoration:none;font-size:.85rem;
+  letter-spacing:.2em;border-radius:40px;backdrop-filter:blur(4px);
+  transition:all .3s;font-weight:700;
+}
+.hero-cta:hover{background:#fff;transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.1)}
+
+/* SEASON SECTIONS */
+.season-section{padding:80px 24px;position:relative}
+.season-section::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.season-spring::before{background:linear-gradient(90deg,transparent,var(--spring),transparent)}
+.season-summer::before{background:linear-gradient(90deg,transparent,var(--summer),transparent)}
+.season-autumn::before{background:linear-gradient(90deg,transparent,var(--autumn),transparent)}
+.season-winter::before{background:linear-gradient(90deg,transparent,var(--winter),transparent)}
+
+.inner{max-width:900px;margin:0 auto}
+.s-head{display:flex;align-items:center;gap:16px;margin-bottom:32px}
+.s-icon{font-size:2rem}
+.s-title{font-family:var(--serif);font-size:clamp(1.3rem,3vw,1.7rem);letter-spacing:.1em;font-weight:700}
+
+/* CONCEPT */
+.concept-text{font-size:1rem;line-height:2.4;max-width:600px;margin:0 auto 48px;text-align:center}
+.features{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.feat{
+  padding:20px;border-radius:16px;text-align:center;
+}
+.feat-spring{background:rgba(232,180,184,.2)}
+.feat-summer{background:rgba(168,200,160,.2)}
+.feat-autumn{background:rgba(212,160,96,.2)}
+.feat-winter{background:rgba(176,196,216,.2)}
+.feat-title{font-size:.85rem;font-weight:700;margin-bottom:4px}
+.feat-text{font-size:.72rem;color:var(--text-dim)}
+
+/* MENU */
+.menu-seasons{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.menu-card{padding:24px;border-radius:12px;border-left:4px solid}
+.menu-card.mc-spring{background:rgba(232,180,184,.1);border-color:var(--spring)}
+.menu-card.mc-summer{background:rgba(168,200,160,.1);border-color:var(--summer)}
+.menu-card.mc-autumn{background:rgba(212,160,96,.1);border-color:var(--autumn)}
+.menu-card.mc-winter{background:rgba(176,196,216,.1);border-color:var(--winter)}
+.menu-name{font-size:1rem;font-weight:700;margin-bottom:4px}
+.menu-desc{font-size:.78rem;color:var(--text-dim);line-height:1.7;margin-bottom:8px}
+.menu-price{font-size:.95rem;font-weight:700}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.gallery-grid img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+
+/* ACCESS */
+#access{text-align:center;background:linear-gradient(135deg,rgba(232,180,184,.15),rgba(176,196,216,.15))}
+.access-info{font-size:.9rem;line-height:2.2;margin-bottom:20px}
+.access-tel{
+  display:inline-block;
+  background:linear-gradient(135deg,var(--spring),var(--autumn));
+  color:#fff;padding:14px 40px;border-radius:40px;text-decoration:none;
+  font-size:1rem;font-weight:700;letter-spacing:.1em;margin-bottom:12px;
+}
+.access-note{font-size:.75rem;color:var(--text-dim)}
+
+footer{text-align:center;padding:40px 24px;font-size:.7rem;color:var(--text-dim)}
+
+@media(max-width:768px){
+  .features{grid-template-columns:repeat(2,1fr)}
+  .menu-seasons{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<a href="design_gallery.html" class="back">← 一覧</a>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-seasons">
+      <div class="hero-season">🌸</div>
+      <div class="hero-season">🌿</div>
+      <div class="hero-season">🍁</div>
+      <div class="hero-season">❄️</div>
+    </div>
+    <h1 class="hero-title">さと山</h1>
+    <p class="hero-tagline">四季折々の鍋料理を、完全個室で<br>奈良の隠れ家 — 完全予約制</p>
+    <a href="tel:08031300580" class="hero-cta">ご予約はこちら</a>
+  </div>
+</section>
+
+<div class="season-section season-spring">
+  <div class="inner">
+    <div class="s-head"><div class="s-icon">🌸</div><h2 class="s-title">里山のこだわり</h2></div>
+    <p class="concept-text">奈良の閑静な住宅街にひっそりと佇む隠れ家。<br>季節の最高峰の食材を完全個室でお楽しみいただけます。</p>
+    <div class="features">
+      <div class="feat feat-spring"><div class="feat-title">完全個室</div><div class="feat-text">2〜10名様</div></div>
+      <div class="feat feat-summer"><div class="feat-title">ガーデン席</div><div class="feat-text">炭火焼肉</div></div>
+      <div class="feat feat-autumn"><div class="feat-title">無料送迎</div><div class="feat-text">最寄駅より</div></div>
+      <div class="feat feat-winter"><div class="feat-title">駐車場完備</div><div class="feat-text">お車でも</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="season-section season-autumn" style="background:rgba(212,160,96,.05)">
+  <div class="inner">
+    <div class="s-head"><div class="s-icon">🍁</div><h2 class="s-title">お品書き</h2></div>
+    <div class="menu-seasons">
+      <div class="menu-card mc-winter"><h3 class="menu-name">ふぐ鍋コース</h3><p class="menu-desc">皮湯引き・テッサ・焼きフグ・フグ鍋・雑炊・デザート</p><p class="menu-price">¥11,000</p></div>
+      <div class="menu-card mc-winter"><h3 class="menu-name">蟹鍋コース</h3><p class="menu-desc">カニみそ・焼き蟹・蟹鍋・雑炊・デザート</p><p class="menu-price">¥13,200</p></div>
+      <div class="menu-card mc-autumn"><h3 class="menu-name">天然クエ鍋コース</h3><p class="menu-desc">幻の高級魚クエ</p><p class="menu-price">要お問合せ</p></div>
+      <div class="menu-card mc-summer"><h3 class="menu-name">炭火焼肉セット</h3><p class="menu-desc">宗寿苑監修タレ</p><p class="menu-price">¥4,400〜</p></div>
+      <div class="menu-card mc-spring"><h3 class="menu-name">蟹鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥7,000</p></div>
+      <div class="menu-card mc-spring"><h3 class="menu-name">フグ鍋ライトコース</h3><p class="menu-desc">ランチ限定</p><p class="menu-price">¥6,000</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="season-section season-summer">
+  <div class="inner">
+    <div class="s-head"><div class="s-icon">📷</div><h2 class="s-title">お料理と空間</h2></div>
+    <div class="gallery-grid">
+      <img src="images/fugunabe_course.jpg" alt="ふぐ鍋" loading="lazy">
+      <img src="images/kaninabe_course.jpg" alt="蟹鍋" loading="lazy">
+      <img src="images/14_garden_bbq.jpg" alt="ガーデン" loading="lazy">
+      <img src="images/10_kue.jpg" alt="クエ" loading="lazy">
+      <img src="images/tabelog_03.jpg" alt="個室" loading="lazy">
+      <img src="images/11_fugunabe.jpg" alt="ふぐ刺し" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<section id="access">
+  <div class="inner" style="padding:80px 0">
+    <div class="s-head" style="justify-content:center"><div class="s-icon">📍</div><h2 class="s-title">アクセス</h2></div>
+    <div class="access-info">〒631-0053 奈良県奈良市学園赤松町3628<br>営業 11:00〜22:00（木曜定休）</div>
+    <a href="tel:08031300580" class="access-tel">080-3130-0580</a>
+    <p class="access-note">富雄駅・学園前駅より無料送迎（要予約）</p>
+  </div>
+</section>
+
+<footer>さと山 &copy; 2026</footer>
+</body>
+</html>

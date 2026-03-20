@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 デザイン10パターン比較</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#0a0a0a;color:#e0e0e0;min-height:100vh}
+.header{text-align:center;padding:60px 24px 40px}
+.header h1{font-size:2rem;letter-spacing:.2em;margin-bottom:12px}
+.header p{color:#888;font-size:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:24px;max-width:1200px;margin:0 auto;padding:0 24px 80px}
+.card{background:#1a1a1a;border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer;text-decoration:none;color:inherit;display:block}
+.card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.card-visual{height:220px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.card-info{padding:20px 24px 24px}
+.card-num{font-size:.75rem;color:#666;letter-spacing:.15em;margin-bottom:6px}
+.card-name{font-size:1.15rem;font-weight:700;margin-bottom:8px}
+.card-desc{font-size:.82rem;color:#999;line-height:1.7}
+.card-tags{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.tag{font-size:.7rem;padding:4px 10px;border-radius:20px;background:#222;color:#aaa}
+
+/* Pattern 1 - 和紙×書道 */
+.v1{background:linear-gradient(135deg,#f5f0e8,#e8dcc8);position:relative}
+.v1::after{content:'さと山';font-size:3rem;color:#2a2018;font-family:serif;letter-spacing:.3em;writing-mode:vertical-rl}
+
+/* Pattern 2 - ホワイトミニマル */
+.v2{background:#fafafa;color:#222}
+.v2-circle{width:140px;height:140px;border-radius:50%;background:url('images/fugunabe_course.jpg') center/cover;border:3px solid #ddd}
+
+/* Pattern 3 - 縦書き和モダン */
+.v3{background:#1a1510;display:flex}
+.v3-left{width:4px;height:140px;background:linear-gradient(to bottom,#c4a35a,transparent);margin-right:16px}
+.v3-text{writing-mode:vertical-rl;color:#c4a35a;font-size:1.4rem;letter-spacing:.5em;font-family:serif}
+
+/* Pattern 4 - アースカラー */
+.v4{background:linear-gradient(135deg,#3d5a3a,#6b7c4e,#a89060)}
+.v4-text{color:#fff;font-size:2.2rem;font-family:serif;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+
+/* Pattern 5 - 紅と漆黒 */
+.v5{background:#0d0808;border:1px solid #5a1a1a}
+.v5-accent{width:60px;height:3px;background:#8b2020;margin-bottom:12px}
+.v5-text{color:#c8a882;font-size:1.8rem;letter-spacing:.4em;font-family:serif}
+
+/* Pattern 6 - ソフト暖色 */
+.v6{background:linear-gradient(135deg,#fef6ee,#fde8d0)}
+.v6-text{color:#6b4226;font-size:1.5rem;font-family:serif}
+.v6-sub{color:#b08050;font-size:.8rem;letter-spacing:.2em}
+
+/* Pattern 7 - 格子×障子 */
+.v7{background:#f8f4ec;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,#d4c8b0 39px,#d4c8b0 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,#d4c8b0 39px,#d4c8b0 40px)}
+.v7-panel{background:rgba(255,255,255,.85);padding:20px 28px;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.v7-text{color:#3a2f20;font-size:1.6rem;font-family:serif}
+
+/* Pattern 8 - 四季グラデーション */
+.v8{background:linear-gradient(135deg,#e8b4b8 0%,#f0d4a8 33%,#a8c8a0 66%,#b0c4d8 100%)}
+.v8-text{color:#2a2a2a;font-size:2rem;font-family:serif;text-shadow:0 1px 10px rgba(255,255,255,.6)}
+
+/* Pattern 9 - 写真フルブリード */
+.v9{background:url('images/fugunabe_course.jpg') center/cover;position:relative}
+.v9::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.v9-text{color:#fff;font-size:1.8rem;font-family:serif;z-index:1;position:relative;text-shadow:0 2px 20px rgba(0,0,0,.8)}
+
+/* Pattern 10 - 墨絵モノクロ */
+.v10{background:#f0ede8;position:relative;overflow:hidden}
+.v10::before{content:'';position:absolute;top:-20px;right:-20px;width:180px;height:180px;background:radial-gradient(circle,rgba(0,0,0,.08) 0%,transparent 70%);border-radius:50%}
+.v10-text{color:#1a1a1a;font-size:2rem;font-family:serif;position:relative}
+.v10-line{width:40px;height:2px;background:#1a1a1a;margin-top:8px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>さと山 デザイン10パターン</h1>
+<p>テイストの異なる10種類のデザイン案です。お好みのパターンをお選びください。</p>
+</div>
+<div class="grid">
+
+<a href="design_01.html" class="card">
+<div class="card-visual v1"></div>
+<div class="card-info">
+<div class="card-num">PATTERN 01</div>
+<div class="card-name">和紙 × 書道</div>
+<div class="card-desc">和紙のテクスチャと筆文字を基調にした、伝統的で温かみのあるデザイン。手漉き和紙の風合いが隠れ家感を演出。</div>
+<div class="card-tags"><span class="tag">伝統</span><span class="tag">和紙</span><span class="tag">筆文字</span></div>
+</div>
+</a>
+
+<a href="design_02.html" class="card">
+<div class="card-visual v2" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px">
+<div class="v2-circle"></div>
+<span style="color:#222;font-size:.8rem;letter-spacing:.3em">SATOYAMA</span>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 02</div>
+<div class="card-name">ホワイトミニマル</div>
+<div class="card-desc">余白を活かしたクリーンな白基調。料理写真の色彩が主役になる、洗練されたミニマルデザイン。</div>
+<div class="card-tags"><span class="tag">ミニマル</span><span class="tag">白</span><span class="tag">洗練</span></div>
+</div>
+</a>
+
+<a href="design_03.html" class="card">
+<div class="card-visual v3" style="align-items:center;justify-content:center">
+<div class="v3-left"></div>
+<div class="v3-text">さと山</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 03</div>
+<div class="card-name">縦書き和モダン</div>
+<div class="card-desc">縦書きテキストと金色アクセントの和モダン。伝統と現代が融合した上品なデザイン。</div>
+<div class="card-tags"><span class="tag">縦書き</span><span class="tag">和モダン</span><span class="tag">金</span></div>
+</div>
+</a>
+
+<a href="design_04.html" class="card">
+<div class="card-visual v4" style="align-items:center;justify-content:center">
+<div class="v4-text">里 山</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 04</div>
+<div class="card-name">里山カラー × オーガニック</div>
+<div class="card-desc">「里山」の名にふさわしい深緑と土色のアースカラー。自然の恵みと安らぎを表現。</div>
+<div class="card-tags"><span class="tag">アースカラー</span><span class="tag">自然</span><span class="tag">緑</span></div>
+</div>
+</a>
+
+<a href="design_05.html" class="card">
+<div class="card-visual v5" style="align-items:center;justify-content:center;flex-direction:column">
+<div class="v5-accent"></div>
+<div class="v5-text">さと山</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 05</div>
+<div class="card-name">紅 × 漆黒 — 割烹スタイル</div>
+<div class="card-desc">漆黒の背景に紅のアクセント。高級割烹の緊張感と格式を表現した重厚なデザイン。</div>
+<div class="card-tags"><span class="tag">高級</span><span class="tag">割烹</span><span class="tag">漆黒</span></div>
+</div>
+</a>
+
+<a href="design_06.html" class="card">
+<div class="card-visual v6" style="align-items:center;justify-content:center;flex-direction:column;gap:8px">
+<div class="v6-sub">完全予約制の隠れ家</div>
+<div class="v6-text">さと山</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 06</div>
+<div class="card-name">ソフト暖色 × おもてなし</div>
+<div class="card-desc">柔らかいクリーム色とテラコッタの温もり。家庭的な安心感と上質さを両立したデザイン。</div>
+<div class="card-tags"><span class="tag">暖色</span><span class="tag">温もり</span><span class="tag">カフェ風</span></div>
+</div>
+</a>
+
+<a href="design_07.html" class="card">
+<div class="card-visual v7" style="align-items:center;justify-content:center">
+<div class="v7-panel"><div class="v7-text">さと山</div></div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 07</div>
+<div class="card-name">格子 × 障子 — 数寄屋</div>
+<div class="card-desc">障子の格子パターンを背景に、和建築の空間美を取り入れたデザイン。光と影の演出。</div>
+<div class="card-tags"><span class="tag">障子</span><span class="tag">数寄屋</span><span class="tag">建築</span></div>
+</div>
+</a>
+
+<a href="design_08.html" class="card">
+<div class="card-visual v8" style="align-items:center;justify-content:center">
+<div class="v8-text">四季の鍋</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 08</div>
+<div class="card-name">四季グラデーション</div>
+<div class="card-desc">春夏秋冬の色彩が溶け合うグラデーション。季節の鍋料理というコンセプトを色で表現。</div>
+<div class="card-tags"><span class="tag">四季</span><span class="tag">グラデーション</span><span class="tag">カラフル</span></div>
+</div>
+</a>
+
+<a href="design_09.html" class="card">
+<div class="card-visual v9" style="align-items:center;justify-content:center">
+<div class="v9-text">さと山</div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 09</div>
+<div class="card-name">写真フルブリード × シネマ</div>
+<div class="card-desc">料理写真を画面いっぱいに使った映画的構図。食の臨場感と没入感を最大化。</div>
+<div class="card-tags"><span class="tag">写真主役</span><span class="tag">シネマ</span><span class="tag">没入感</span></div>
+</div>
+</a>
+
+<a href="design_10.html" class="card">
+<div class="card-visual v10" style="align-items:center;justify-content:center;flex-direction:column">
+<div class="v10-text">さと山</div>
+<div class="v10-line"></div>
+</div>
+<div class="card-info">
+<div class="card-num">PATTERN 10</div>
+<div class="card-name">墨絵 × モノクロ</div>
+<div class="card-desc">墨の濃淡だけで表現するモノクロームの世界。料理写真だけがカラーで浮かび上がる。</div>
+<div class="card-tags"><span class="tag">墨絵</span><span class="tag">モノクロ</span><span class="tag">アート</span></div>
+</div>
+</a>
+
+</div>
+</body>
+</html>

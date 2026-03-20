@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>さと山 — Design 09: 写真フルブリード×シネマ</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+JP:wght@200;300;400&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0f0f0f;--text:#f0ece4;--text-dim:rgba(240,236,228,.5);
+  --serif:'Cormorant Garamond',serif;--sans:'Noto Sans JP',sans-serif;
+}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);font-weight:200;overflow-x:hidden}
+a.back{position:fixed;top:20px;left:20px;z-index:100;font-size:.75rem;color:rgba(255,255,255,.5);text-decoration:none}
+
+/* HERO - フル画面写真 */
+.hero{
+  height:100vh;position:relative;display:flex;align-items:flex-end;
+  justify-content:flex-start;
+}
+.hero-bg{position:absolute;inset:0;background:url('images/fugunabe_course.jpg') center/cover}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(0deg,rgba(15,15,15,.95) 0%,rgba(15,15,15,.3) 40%,rgba(15,15,15,.1) 100%);
+}
+.hero-content{position:relative;z-index:2;padding:60px;max-width:700px}
+.hero-en{font-family:var(--serif);font-size:clamp(3rem,8vw,5rem);font-weight:300;letter-spacing:.1em;margin-bottom:8px;line-height:1.1}
+.hero-jp{font-size:clamp(1.2rem,3vw,1.6rem);letter-spacing:.3em;margin-bottom:8px;font-weight:300}
+.hero-line{width:40px;height:1px;background:var(--text);margin:20px 0;opacity:.4}
+.hero-tagline{font-size:.85rem;color:var(--text-dim);letter-spacing:.15em;line-height:1.8;margin-bottom:32px}
+.hero-cta{
+  display:inline-block;border:1px solid rgba(255,255,255,.4);color:var(--text);
+  padding:12px 40px;text-decoration:none;font-size:.8rem;letter-spacing:.3em;
+  transition:all .4s;backdrop-filter:blur(4px);
+}
+.hero-cta:hover{background:rgba(255,255,255,.15);border-color:rgba(255,255,255,.6)}
+
+/* FULL PHOTO SECTIONS */
+.photo-section{
+  height:80vh;position:relative;display:flex;align-items:center;
+}
+.photo-section-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+.photo-section-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(15,15,15,.85) 0%,rgba(15,15,15,.4) 50%,transparent 100%);
+}
+.photo-section-content{position:relative;z-index:2;padding:60px;max-width:550px}
+.ps-label{font-family:var(--serif);font-size:.8rem;letter-spacing:.5em;color:var(--text-dim);margin-bottom:8px}
+.ps-title{font-size:clamp(1.5rem,3vw,2rem);letter-spacing:.15em;margin-bottom:16px;font-weight:300}
+.ps-text{font-size:.85rem;color:var(--text-dim);line-height:2;letter-spacing:.05em}
+
+/* MENU - 暗いバー */
+#menu{padding:80px 24px;background:var(--bg)}
+.inner{max-width:800px;margin:0 auto}
+.s-head{margin-bottom:48px}
+.s-en{font-family:var(--serif);font-size:2rem;font-weight:300;letter-spacing:.15em;margin-bottom:4px}
+.s-jp{font-size:.8rem;color:var(--text-dim);letter-spacing:.3em}
+.menu-list{list-style:none}
+.menu-item{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,.06);
+}
+.menu-name{font-size:1rem;letter-spacing:.1em;font-weight:300}
+.menu-desc{font-size:.72rem;color:var(--text-dim);margin-top:4px}
+.menu-price{font-family:var(--serif);font-size:1.1rem;letter-spacing:.05em;white-space:nowrap}
+
+/* PHOTO GRID - cinematic */
+.cinema-grid{display:grid;grid-template-columns:2fr 1fr;gap:2px}
+.cinema-grid img{width:100%;height:100%;object-fit:cover}
+.cinema-tall{grid-row:1/3}
+.cinema-grid .small{height:250px}
+
+/* ACCESS */
+#access{
+  padding:80px 24px;text-align:center;
+  background:linear-gradient(0deg,var(--bg),rgba(30,28,24,1));
+}
+.access-info{font-size:.85rem;line-height:2.4;color:var(--text-dim);margin-bottom:24px;letter-spacing:.1em}
+.access-tel{
+  font-family:var(--serif);font-size:2rem;color:var(--text);
+  text-decoration:none;display:block;margin-bottom:16px;font-weight:300;letter-spacing:.1em;
+}
+.access-note{font-size:.72rem;color:var(--text-dim)}
+.access-cta{
+  display:inline-block;margin-top:32px;
+  border:1px solid rgba(255,255,255,.3);color:var(--text);
+  padding:14px 56px;text-decoration:none;font-size:.8rem;letter-spacing:.3em;
+  transition:all .3s;
+}
+.access-cta:hover{background:rgba(255,255,255,.1)}
+
+footer{text-align:center;padding:32px 24px;font-size:.65rem;color:rgba(255,255,255,.2);letter-spacing:.15em}
+
+@media(max-width:768px){
+  .hero-content,.photo-section-content{padding:32px 24px}
+  .photo-section{height:60vh}
+  .photo-section-overlay{background:linear-gradient(0deg,rgba(15,15,15,.9) 0%,rgba(15,15,15,.5) 50%,transparent 100%)}
+  .photo-section-content{max-width:100%}
+  .cinema-grid{grid-template-columns:1fr}
+  .cinema-tall{grid-row:auto}
+  .cinema-grid .small{height:200px}
+  .menu-item{flex-direction:column;gap:4px}
+  .menu-price{margin-top:4px}
+}
+</style>
+</head>
+<body>
+<a href="design_gallery.html" class="back">← 一覧</a>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-en">Satoyama</h1>
+    <p class="hero-jp">さと山</p>
+    <div class="hero-line"></div>
+    <p class="hero-tagline">奈良の静寂に包まれた隠れ家で<br>季節の鍋料理を、完全個室で</p>
+    <a href="tel:08031300580" class="hero-cta">RESERVATION</a>
+  </div>
+</section>
+
+<div class="photo-section">
+  <div class="photo-section-bg" style="background-image:url('images/tabelog_03.jpg')"></div>
+  <div class="photo-section-overlay"></div>
+  <div class="photo-section-content">
+    <p class="ps-label">PRIVATE</p>
+    <h2 class="ps-title">完全個室</h2>
+    <p class="ps-text">2名様から10名様まで、周りを気にせず<br>大切な方との時間をお過ごしいただけます。</p>
+  </div>
+</div>
+
+<div class="photo-section">
+  <div class="photo-section-bg" style="background-image:url('images/14_garden_bbq.jpg')"></div>
+  <div class="photo-section-overlay" style="background:linear-gradient(270deg,rgba(15,15,15,.85) 0%,rgba(15,15,15,.4) 50%,transparent 100%)"></div>
+  <div class="photo-section-content" style="margin-left:auto;text-align:right">
+    <p class="ps-label">GARDEN</p>
+    <h2 class="ps-title">ガーデン席</h2>
+    <p class="ps-text">開放的な庭園で楽しむ炭火焼肉。<br>大阪の老舗「宗寿苑」監修のタレで。</p>
+  </div>
+</div>
+
+<section id="menu">
+  <div class="inner">
+    <div class="s-head"><div class="s-en">Menu</div><div class="s-jp">お品書き</div></div>
+    <ul class="menu-list">
+      <li class="menu-item"><div><div class="menu-name">ふぐ鍋コース</div><div class="menu-desc">皮湯引き・テッサ・焼きフグ・フグ鍋・雑炊・デザート</div></div><div class="menu-price">¥11,000</div></li>
+      <li class="menu-item"><div><div class="menu-name">蟹鍋コース</div><div class="menu-desc">カニみそ・焼き蟹・蟹鍋・雑炊・デザート</div></div><div class="menu-price">¥13,200</div></li>
+      <li class="menu-item"><div><div class="menu-name">天然クエ鍋コース</div><div class="menu-desc">幻の高級魚</div></div><div class="menu-price">要お問合せ</div></li>
+      <li class="menu-item"><div><div class="menu-name">炭火焼肉セット</div><div class="menu-desc">宗寿苑監修タレ</div></div><div class="menu-price">¥4,400〜</div></li>
+      <li class="menu-item"><div><div class="menu-name">蟹鍋ライトコース</div><div class="menu-desc">ランチ限定</div></div><div class="menu-price">¥7,000</div></li>
+      <li class="menu-item"><div><div class="menu-name">フグ鍋ライトコース</div><div class="menu-desc">ランチ限定</div></div><div class="menu-price">¥6,000</div></li>
+    </ul>
+  </div>
+</section>
+
+<div class="cinema-grid">
+  <img src="images/kaninabe_course.jpg" alt="蟹鍋" class="cinema-tall" loading="lazy">
+  <img src="images/10_kue.jpg" alt="クエ" class="small" loading="lazy">
+  <img src="images/11_fugunabe.jpg" alt="ふぐ刺し" class="small" loading="lazy">
+</div>
+
+<section id="access">
+  <div class="inner">
+    <div class="s-head" style="text-align:center"><div class="s-en">Access</div><div class="s-jp">ご案内</div></div>
+    <div class="access-info">〒631-0053 奈良県奈良市学園赤松町3628<br>営業 11:00〜22:00（木曜定休）</div>
+    <a href="tel:08031300580" class="access-tel">080-3130-0580</a>
+    <p class="access-note">富雄駅・学園前駅より無料送迎（要予約）</p>
+    <a href="tel:08031300580" class="access-cta">RESERVATION</a>
+  </div>
+</section>
+
+<footer>SATOYAMA &copy; 2026</footer>
+</body>
+</html>
